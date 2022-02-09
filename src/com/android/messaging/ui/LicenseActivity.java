@@ -16,20 +16,32 @@
 
 package com.android.messaging.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.webkit.WebView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.messaging.R;
 
-public class LicenseActivity extends Activity {
+public class LicenseActivity extends AppCompatActivity {
     private final String LICENSE_URL = "file:///android_asset/licenses.html";
 
     @Override
     public void onCreate(final Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.license_activity);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         final WebView webView = (WebView) findViewById(R.id.content);
         webView.loadUrl(LICENSE_URL);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -167,9 +167,7 @@ public class ConversationListItemView extends FrameLayout implements OnClickList
         mListItemReadTypeface = Typefaces.getRobotoNormal();
         mListItemUnreadTypeface = Typefaces.getRobotoBold();
 
-        if (OsUtil.isAtLeastL()) {
-            setTransitionGroup(true);
-        }
+        setTransitionGroup(true);
     }
 
     @Override
